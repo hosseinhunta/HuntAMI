@@ -1,14 +1,20 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+//! Runtime-independent AMI wire layer: lossless messages, incremental
+//! codec, validation, resource limits, and structured errors.
+//!
+//! See `docs/architecture.md` for the invariants this crate enforces.
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#![forbid(unsafe_code)]
+#![warn(missing_docs)]
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub mod decoder;
+pub mod error;
+pub mod fields;
+pub mod limits;
+pub mod message;
+pub mod validate;
+
+pub use decoder::{DecodeStep, Decoder};
+pub use error::{AmiError, FieldEncodingReason, LimitKind, Result, TruncationStage};
+pub use fields::{Field, FieldSet};
+pub use limits::Limits;
+pub use message::{AmiMessage, CommandOutput, OutputFraming, ResponseKind, WireMessage};
