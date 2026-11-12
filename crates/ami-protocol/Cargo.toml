@@ -1,0 +1,19 @@
+[package]
+name = "ami-protocol"
+description = "Runtime-independent Asterisk Manager Interface (AMI) wire representation, incremental codec, validation and errors."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+bytes = "1"
+
+[dev-dependencies]
+proptest = "1"
+
+[[bench]]
+name = "parser"
+harness = false

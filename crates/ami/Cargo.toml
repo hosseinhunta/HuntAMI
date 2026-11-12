@@ -1,0 +1,16 @@
+[package]
+name = "ami"
+description = "Public facade for the ami-rs Asterisk Manager Interface client (phase 2 adds the async client)."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[features]
+default = ["std"]
+std = ["ami-protocol/std"]
+
+[dependencies]
+ami-protocol = { path = "../ami-protocol", default-features = false }
